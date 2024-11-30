@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_my_model_tree" model="ir.ui.view">
+        <field name="name">my.model.tree</field>
+        <field name="model">my.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_my_model_form" model="ir.ui.view">
+        <field name="name">my.model.form</field>
+        <field name="model">my.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_my_model" model="ir.actions.act_window">
+        <field name="name">My Models</field>
+        <field name="res_model">my.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Top Level Menu -->
+    <menuitem
+        id="menu_my_model_root"
+        name="My Custom Module"
+        sequence="10"
+    />
+
+    <!-- Submenu -->
+    <menuitem
+        id="menu_my_model"
+        name="My Models"
+        parent="menu_my_model_root"
+        action="action_my_model"
+        sequence="10"
+    />
+</odoo>
